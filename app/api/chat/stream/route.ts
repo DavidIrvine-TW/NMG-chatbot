@@ -2,11 +2,11 @@ import { NextResponse } from 'next/server';
 import type { ChatRequest } from '@/types/chat';
 
 const mockStreamResponses = [
-  "Wombat",
-  "Jellyfish",
-  "Lyrebird",
-  "Armadillo",
-  "Seahorse",
+  "**Wombats** produce cube-shaped poop! They use it to mark territory, and the shape stops it from rolling away.\n\nThey're also surprisingly fast — up to *40 km/h* in short bursts.",
+  "Here are a few things about **jellyfish**:\n\n1. They have no brain, heart, or blood\n2. Some species are *immortal* (Turritopsis dohrnii)\n3. They've been around for over **500 million years**\n\nThat's older than dinosaurs.",
+  "The **lyrebird** is one of nature's best mimics. They can imitate:\n\n- Chainsaws\n- Camera shutters\n- Car alarms\n- Other bird species\n\n> Their tail feathers resemble a lyre, which is how they got their name.",
+  "The **armadillo** is the only mammal with a bony shell. The nine-banded armadillo always gives birth to *identical quadruplets*.\n\n```\nArmadillo armor:\n- Made of bony plates\n- Covered in keratin\n- Can't fully curl up (only one species can)\n```",
+  "**Seahorses** are unique — the *male* carries and delivers the babies.\n\n| Feature | Detail |\n|---------|--------|\n| Species | ~46 known |\n| Size | 1.5 - 35 cm |\n| Speed | ~1.5 m/hr |\n\nThey're also monogamous and greet their partner every morning with a dance.",
 ];
 
 export async function POST(request: Request): Promise<Response> {
