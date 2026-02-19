@@ -2,11 +2,11 @@ import { NextResponse } from 'next/server';
 import type { ChatRequest } from '@/types/chat';
 
 const mockStreamResponses = [
-  "**Wombats** produce cube-shaped poop! They use it to mark territory, and the shape stops it from rolling away.\n\nThey're also surprisingly fast — up to *40 km/h* in short bursts.",
-  "Here are a few things about **jellyfish**:\n\n1. They have no brain, heart, or blood\n2. Some species are *immortal* (Turritopsis dohrnii)\n3. They've been around for over **500 million years**\n\nThat's older than dinosaurs.",
-  "The **lyrebird** is one of nature's best mimics. They can imitate:\n\n- Chainsaws\n- Camera shutters\n- Car alarms\n- Other bird species\n\n> Their tail feathers resemble a lyre, which is how they got their name.",
-  "The **armadillo** is the only mammal with a bony shell. The nine-banded armadillo always gives birth to *identical quadruplets*.\n\n```\nArmadillo armor:\n- Made of bony plates\n- Covered in keratin\n- Can't fully curl up (only one species can)\n```",
-  "**Seahorses** are unique — the *male* carries and delivers the babies.\n\n| Feature | Detail |\n|---------|--------|\n| Species | ~46 known |\n| Size | 1.5 - 35 cm |\n| Speed | ~1.5 m/hr |\n\nThey're also monogamous and greet their partner every morning with a dance.",
+  "**Deep learning** is just neural nets with *many* layers.",
+  "AI bias comes from biased data — *garbage in, garbage out*.",
+  "**Reinforcement learning** is how AI learns from trial and error.",
+  "The first neural network, the *Perceptron*, was built in **1958**.",
+  "An AI's `temperature` setting controls how *creative* its output is.",
 ];
 
 export async function POST(request: Request): Promise<Response> {
@@ -20,18 +20,21 @@ export async function POST(request: Request): Promise<Response> {
       );
     }
 
-    // Simulate random server errors (10% chance)
+    // Simulate random server errors (25% chance)
     const errors = [
       { error: 'Bad request: message could not be processed.', status: 400 },
       { error: 'Service temporarily unavailable. Please try again.', status: 503 },
     ];
-    if (Math.random() > 0.9) {
+    if (Math.random() > 0.75) {
       const err = errors[Math.floor(Math.random() * errors.length)];
       return NextResponse.json(
         { error: `[${err.status}] ${err.error}` },
         { status: err.status }
       );
     }
+
+    // Random delay before responding (0-3 seconds) to show typing indicator
+    await new Promise(resolve => setTimeout(resolve, Math.random() * 3000));
 
     const encoder = new TextEncoder();
     const responseText = mockStreamResponses[Math.floor(Math.random() * mockStreamResponses.length)];
