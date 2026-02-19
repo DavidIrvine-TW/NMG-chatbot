@@ -1,0 +1,47 @@
+@import "tailwindcss";
+
+.chat-input-container {
+  @apply w-full;
+}
+
+.chat-input-form {
+  @apply flex items-end w-full transition-all duration-150;
+  padding: var(--spacing-sm) var(--spacing-md);
+  border: 1px solid var(--color-border-input);
+  background-color: var(--color-bg-elevated);
+}
+
+.chat-input-form:focus-within {
+  border-color: var(--color-quirk);
+}
+
+.chat-input {
+  @apply flex-1 bg-transparent border-none outline-none resize-none;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--color-text-primary);
+  line-height: 1.5;
+  max-height: 150px;
+}
+
+.chat-input::placeholder {
+  color: var(--color-text-muted);
+  font-size: 13px;
+}
+
+.send-btn {
+  @apply w-7 h-7 flex-shrink-0 cursor-pointer border-none p-1 transition-all duration-150;
+  background-color: transparent;
+  color: var(--color-text-muted);
+}
+
+.send-btn:hover:not(:disabled) {
+  background-color: var(--color-quirk);
+  color: #FFFFFF;
+}
+
+.send-btn:disabled {
+  @apply cursor-not-allowed;
+  opacity: 0.3;
+}

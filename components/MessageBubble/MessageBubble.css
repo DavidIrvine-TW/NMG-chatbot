@@ -1,0 +1,122 @@
+@import "tailwindcss";
+
+.message-wrapper {
+  @apply flex w-full;
+}
+
+.message-wrapper.user {
+  @apply justify-end;
+}
+
+.message-wrapper.bot {
+  @apply justify-start items-start gap-3;
+}
+
+.bot-avatar {
+  @apply w-5 h-5 flex-shrink-0 mt-1;
+  color: var(--color-quirk);
+}
+
+.message-bubble {
+  padding: var(--spacing-sm) var(--spacing-md);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+.message-bubble.user {
+  background-color: var(--color-accent);
+  border: 1px solid var(--color-accent-hover);
+  color: var(--color-text-primary);
+  max-width: 70%;
+}
+
+.message-bubble.bot {
+  background-color: var(--color-bg-elevated);
+  color: var(--color-text-primary);
+  border: 1px solid var(--color-border-default);
+  max-width: 600px;
+}
+
+.message-bubble.error {
+  border-color: #dc2626;
+}
+
+.message-text {
+  @apply whitespace-pre-wrap;
+}
+
+/* Markdown content styling */
+.markdown-content p {
+  @apply mb-2 last:mb-0;
+}
+
+.markdown-content code {
+  font-family: 'Courier New', monospace;
+  background-color: var(--color-accent);
+  padding: 0.15em 0.35em;
+  border-radius: 3px;
+  font-size: 0.9em;
+}
+
+.markdown-content pre {
+  @apply overflow-x-auto my-2 p-3;
+  background-color: var(--color-accent);
+  border: 1px solid var(--color-border-default);
+  border-radius: 3px;
+}
+
+.markdown-content pre code {
+  background: none;
+  padding: 0;
+}
+
+.markdown-content ul,
+.markdown-content ol {
+  @apply pl-5 mb-2;
+}
+
+.markdown-content li {
+  @apply mb-1;
+}
+
+.markdown-content strong {
+  @apply font-semibold;
+}
+
+.markdown-content a {
+  color: var(--color-quirk);
+  text-decoration: underline;
+}
+
+.message-meta {
+  @apply flex items-center gap-2 mt-1;
+}
+
+.message-time {
+  font-size: 11px;
+  color: var(--color-text-muted);
+}
+
+.retry-btn {
+  @apply flex items-center gap-1 cursor-pointer bg-transparent border-none;
+  font-size: 11px;
+  color: #dc2626;
+  font-family: var(--font-sans);
+  padding: 2px 4px;
+}
+
+.retry-btn:hover {
+  text-decoration: underline;
+}
+
+.retry-btn svg {
+  @apply w-3 h-3;
+}
+
+@media (max-width: 768px) {
+  .message-bubble.user,
+  .message-bubble.bot {
+    max-width: 85%;
+  }
+}
